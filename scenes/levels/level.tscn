@@ -2,9 +2,9 @@
 
 [ext_resource type="Material" uid="uid://dt3rx50rt186d" path="res://assets/materials/marble1/marble1.tres" id="1_yocmc"]
 [ext_resource type="Texture2D" uid="uid://csdmj4rm7wj1c" path="res://icon.svg" id="2_ijsrm"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="3_a76kn"]
-[ext_resource type="Script" path="res://scripts/cam_select.gd" id="4_2ed4u"]
-[ext_resource type="Script" path="res://scripts/computer.gd" id="5_ubx85"]
+[ext_resource type="Script" path="res://scripts/player/camera.gd" id="3_a76kn"]
+[ext_resource type="Script" path="res://scripts/player/cam_select.gd" id="4_2ed4u"]
+[ext_resource type="Script" path="res://scripts/player/computer.gd" id="5_ubx85"]
 [ext_resource type="AudioStream" uid="uid://7cv6wa3i7fuk" path="res://assets/audio/sfx/keys/ky1.wav" id="6_cydte"]
 [ext_resource type="AudioStream" uid="uid://cwbbyl8qvp2um" path="res://assets/audio/sfx/keys/ky2.wav" id="7_ggjhm"]
 [ext_resource type="AudioStream" uid="uid://6jk7lulvxiah" path="res://assets/audio/sfx/keys/ky3.wav" id="8_ye3n4"]
@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cymwx7cma8gmf" path="res://assets/audio/sfx/mouse/ms2.wav" id="12_afgu1"]
 [ext_resource type="AudioStream" uid="uid://dcqpeawthskbu" path="res://assets/audio/sfx/mouse/ms3.wav" id="13_veebx"]
 [ext_resource type="PackedScene" uid="uid://ljraqsatl01l" path="res://scenes/ui/ui_login.tscn" id="14_y65bq"]
-[ext_resource type="Script" path="res://scripts/customer_manager.gd" id="15_k85bw"]
+[ext_resource type="Script" path="res://scripts/customer/customer_manager.gd" id="15_k85bw"]
 [ext_resource type="PackedScene" uid="uid://bw0my82eed8e6" path="res://scenes/customer/customer_info.tscn" id="16_mjyq2"]
 [ext_resource type="PackedScene" uid="uid://pl7ovo0orapj" path="res://scenes/customer/customer.tscn" id="17_srs7x"]
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bw0my82eed8e6"]
+[gd_scene load_steps=14 format=3 uid="uid://bw0my82eed8e6"]
 
 [ext_resource type="PackedScene" uid="uid://ck651yi8qkqbu" path="res://scenes/ui/ui_check.tscn" id="1_gchr4"]
+[ext_resource type="Script" path="res://scenes/customer/customer_info.gd" id="1_mitmd"]
 [ext_resource type="PackedScene" uid="uid://cptgdteo3qi12" path="res://scenes/ui/ui_id.tscn" id="2_dr8vt"]
 [ext_resource type="PackedScene" uid="uid://q3u20q217ynu" path="res://scenes/ui/ui_account_id.tscn" id="3_d4bew"]
 
@@ -38,6 +39,7 @@ albedo_texture = SubResource("ViewportTexture_rpdvi")
 size = Vector2(1.48, 0.315)
 
 [node name="CustomerInfo" type="Node3D"]
+script = ExtResource("1_mitmd")
 
 [node name="MeshCheck" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0750185, 0, 0.0135412, 0, 0.0762308, 0, -0.0135412, 0, 0.0750185, -0.106274, 0, -0.0285606)

@@ -64,7 +64,7 @@ hidden_pos = Vector2(0, -515)
 hide_time = 0.1
 show_time = 0.1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TweenPanelManager/MainPanel"]
+[node name="AccountContainer" type="VBoxContainer" parent="TweenPanelManager/MainPanel"]
 layout_mode = 0
 offset_left = 288.0
 offset_top = 40.0
@@ -73,23 +73,23 @@ offset_bottom = 98.0
 scale = Vector2(1.0136, 1.15143)
 alignment = 1
 
-[node name="Label" type="Label" parent="TweenPanelManager/MainPanel/VBoxContainer"]
+[node name="Label" type="Label" parent="TweenPanelManager/MainPanel/AccountContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_takno")
 text = "CUSTOMER INFO"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="TweenPanelManager/MainPanel/VBoxContainer"]
+[node name="Label2" type="Label" parent="TweenPanelManager/MainPanel/AccountContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "ACCOUNT ID:"
 
-[node name="AccountID" type="LineEdit" parent="TweenPanelManager/MainPanel/VBoxContainer"]
+[node name="AccountID" type="LineEdit" parent="TweenPanelManager/MainPanel/AccountContainer"]
 layout_mode = 2
 caret_blink = true
 
-[node name="Button" type="Button" parent="TweenPanelManager/MainPanel/VBoxContainer"]
+[node name="Button" type="Button" parent="TweenPanelManager/MainPanel/AccountContainer"]
 custom_minimum_size = Vector2(50, 25)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -159,4 +159,4 @@ scale = Vector2(0.212999, 0.212999)
 mouse_filter = 2
 texture = ExtResource("1_ne1w7")
 
-[connection signal="text_submitted" from="TweenPanelManager/MainPanel/VBoxContainer/AccountID" to="." method="_on_account_id_text_submitted"]
+[connection signal="text_submitted" from="TweenPanelManager/MainPanel/AccountContainer/AccountID" to="." method="_on_account_id_text_submitted"]

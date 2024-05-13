@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://pl7ovo0orapj"]
+[gd_scene load_steps=3 format=3 uid="uid://pl7ovo0orapj"]
+
+[ext_resource type="Script" path="res://scripts/customer/customer.gd" id="1_odmrn"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pg348"]
 
 [node name="Customer" type="PathFollow3D"]
 transform = Transform3D(0.999981, 0, 8.84835e-08, 0, 1, 0, -8.84835e-08, 0, 0.999981, 0, 0, 0)
 loop = false
+script = ExtResource("1_odmrn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

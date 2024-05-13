@@ -3,11 +3,10 @@ extends Node3D
 @onready var customers = $Customers
 var current_customer = null 
 
-signal customer_changed(customer)
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	customer_changed.connect(_customer_changed)
+	Global.customer_manager = self 
+	Global.customer_changed.connect(_customer_changed)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -22,16 +21,15 @@ func _process(delta):
 		if i == 0: 
 			if customer.progress_ratio == 1 and !current_customer: 
 				current_customer = customer
-				emit_signal("customer_changed", customer)
+				Global.emit_signal("customer_changed", customer)
 		
 		customer.global_position.x = cos(delta * Time.get_ticks_msec() / 10 + i) * 0.2
 
 func _on_spawn_timer_timeout():
-	var customer = preload("res://scenes/customer.tscn").instantiate()
+	var customer = preload("res://scenes/customer/customer.tscn").instantiate()
 	customers.add_child(customer)
 	customer.progress_ratio = 0 
 
 func _customer_changed(c): 
-	print("how")
 	$CustomerInfo/AnimationPlayer.play("give")
-	
+		
