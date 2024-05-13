@@ -1,7 +1,9 @@
 extends Node
 
 var customer_manager = null 
-signal customer_changed(customer)
+var id_viewport
 
+signal customer_changed(customer)
+signal account_found
 
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cptgdteo3qi12"]
 
-[ext_resource type="Texture2D" uid="uid://csdmj4rm7wj1c" path="res://icon.svg" id="1_l7qva"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ya0wv"]
 
 [node name="ID" type="Control"]
 custom_minimum_size = Vector2(448, 312)
@@ -18,16 +18,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="ImageContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 120.0
-offset_right = 137.0
-offset_bottom = 143.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 113.0
+offset_bottom = 135.0
+scale = Vector2(1.41056, 1.41056)
+
+[node name="Picture" type="TextureRect" parent="ImageContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("ViewportTexture_ya0wv")
+expand_mode = 1
+
+[node name="LabelCustomerName" type="Label" parent="ImageContainer"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "MR Shulmper"
-
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(88, 64)
-scale = Vector2(0.8125, 0.8125)
-texture = ExtResource("1_l7qva")

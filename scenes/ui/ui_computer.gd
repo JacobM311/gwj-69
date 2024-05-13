@@ -8,4 +8,4 @@ func _on_account_id_text_submitted(new_text):
 	var customer = Global.customer_manager.current_customer
 	
 	if new_text == str(customer.account_id): 
-		print("found account!")
+		Global.emit_signal("account_found")

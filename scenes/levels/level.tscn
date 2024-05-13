@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bjtn7pdxc3gjc"]
+[gd_scene load_steps=33 format=3 uid="uid://bjtn7pdxc3gjc"]
 
 [ext_resource type="Material" uid="uid://dt3rx50rt186d" path="res://assets/materials/marble1/marble1.tres" id="1_yocmc"]
 [ext_resource type="Texture2D" uid="uid://csdmj4rm7wj1c" path="res://icon.svg" id="2_ijsrm"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ljraqsatl01l" path="res://scenes/ui/ui_login.tscn" id="14_y65bq"]
 [ext_resource type="Script" path="res://scripts/customer/customer_manager.gd" id="15_k85bw"]
 [ext_resource type="PackedScene" uid="uid://bw0my82eed8e6" path="res://scenes/customer/customer_info.tscn" id="16_mjyq2"]
-[ext_resource type="PackedScene" uid="uid://pl7ovo0orapj" path="res://scenes/customer/customer.tscn" id="17_srs7x"]
+[ext_resource type="Script" path="res://scenes/levels/id_viewport.gd" id="17_hl8l0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_smrw2"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -162,6 +162,8 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l00ov"]
 
 [node name="Level" type="Node3D"]
 
@@ -314,14 +316,22 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13687e-13, 0, 11.3358)
 curve = SubResource("Curve3D_4shdt")
 
-[node name="Customer" parent="CustomerManager/Customers" instance=ExtResource("17_srs7x")]
-transform = Transform3D(0.999981, 0, 8.84834e-08, 0, 1, 0, -8.84834e-08, 0, 0.999981, 1.45492e-06, 0, 1.30654)
-
 [node name="SpawnTimer" type="Timer" parent="CustomerManager"]
-wait_time = 15.0
+wait_time = 2.0
 autostart = true
 
 [node name="SubViewport" type="SubViewport" parent="."]
 canvas_cull_mask = 4294967294
+render_target_update_mode = 4
+script = ExtResource("17_hl8l0")
+
+[node name="Dummies" type="Node3D" parent="SubViewport"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.39969e-07, 0, 16.5891)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewport/Dummies"]
+mesh = SubResource("CapsuleMesh_l00ov")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Dummies"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.13381, 0.510367, 8.15738e-08)
 
 [connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
