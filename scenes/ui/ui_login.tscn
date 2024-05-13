@@ -109,6 +109,19 @@ hidden_pos = Vector2(0, -515)
 hide_time = 0.1
 show_time = 0.1
 
+[node name="Label" type="Label" parent="TweenPanelManager/LoginPanel"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 23.0
+offset_right = 399.0
+offset_bottom = 164.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "BUSSIN' 
+BANKING
+"
+horizontal_alignment = 1
+
 [node name="CenterContainer" type="CenterContainer" parent="TweenPanelManager/LoginPanel"]
 layout_mode = 1
 anchors_preset = 15

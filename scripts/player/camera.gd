@@ -20,7 +20,7 @@ func _process(delta):
 	var cast := $RayCast3D
 	
 	if cast.is_colliding(): 
-		if cast.get_collider() is CamSelect and Input.is_action_just_pressed("mouse_down"): 
+		if cast.get_collider() is CamSelect and Input.is_action_just_pressed("action"): 
 			cast.get_collider().select(self)
 	
 func _unhandled_input(event):

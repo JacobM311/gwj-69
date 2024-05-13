@@ -22,7 +22,7 @@ func _process(delta):
 
 		motion.position = cursor.position
 		
-		if Input.is_action_pressed("mouse_down"): 
+		if Input.is_action_pressed("action"): 
 			mouse_event.pressed = true
 		
 		mouse_event.button_index = MOUSE_BUTTON_LEFT
@@ -42,9 +42,8 @@ func _unhandled_input(event):
 	if !cam_select.selected: 
 		return 
 
-	
 	var mouse_event = InputEventMouseButton.new()
-	
+				
 	if event is InputEventMouseButton: 
 		if event.button_index == 1 and event.pressed: 
 			$SFXMouse.play()
@@ -55,7 +54,6 @@ func _unhandled_input(event):
 		cursor.position.y = clamp(cursor.position.y, 0, 512 - (cursor.size.y * cursor.scale.y))
 		event.position = cursor.position
 		
-	
 	if event is InputEventKey: 
 		vp.push_input(event)
 		$SFXKeys.play()
