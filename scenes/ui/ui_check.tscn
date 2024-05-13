@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck651yi8qkqbu"]
+
+[sub_resource type="Theme" id="Theme_wi7k5"]
+Label/font_sizes/font_size = 25
+
+[node name="Check" type="Control"]
+custom_minimum_size = Vector2(600, 264)
+layout_mode = 3
+anchor_right = 0.520833
+anchor_bottom = 0.407407
+theme = SubResource("Theme_wi7k5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 64.0
+offset_right = 188.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "shlumper"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 64.0
+offset_right = 561.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "$500.0"
+
+[node name="LabelVoid" type="Label" parent="."]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 128.0
+offset_right = 246.0
+offset_bottom = 163.0
+rotation = -0.62558
+scale = Vector2(2.93566, 2.93566)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "VOID"

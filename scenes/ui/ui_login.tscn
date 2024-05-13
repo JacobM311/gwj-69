@@ -1,0 +1,162 @@
+[gd_scene load_steps=8 format=3 uid="uid://ljraqsatl01l"]
+
+[ext_resource type="Script" path="res://scenes/ui/ui_computer.gd" id="1_0aahm"]
+[ext_resource type="Texture2D" uid="uid://mgrdb3bykf2w" path="res://assets/images/mouse.png" id="1_ne1w7"]
+[ext_resource type="Script" path="res://scripts/tween_panel/tween_panel_button.gd" id="2_356yg"]
+[ext_resource type="Script" path="res://scripts/tween_panel/tween_panel_manager.gd" id="2_ufq30"]
+[ext_resource type="Script" path="res://scripts/tween_panel/tween_panel.gd" id="3_5sod6"]
+
+[sub_resource type="FontVariation" id="FontVariation_takno"]
+variation_embolden = 1.29
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ui8ry"]
+bg_color = Color(0.329412, 0.329412, 0.329412, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.901961, 0.988235, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_offset = Vector2(2, 2)
+
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 3
+anchor_right = 0.444444
+anchor_bottom = 0.790123
+mouse_filter = 2
+script = ExtResource("1_0aahm")
+
+[node name="TweenPanelManager" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ufq30")
+
+[node name="ColorRect" type="ColorRect" parent="TweenPanelManager"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainPanel" type="Control" parent="TweenPanelManager"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -515.0
+offset_right = 512.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_5sod6")
+hidden_pos = Vector2(0, -515)
+hide_time = 0.1
+show_time = 0.1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TweenPanelManager/MainPanel"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 40.0
+offset_right = 503.0
+offset_bottom = 98.0
+scale = Vector2(1.0136, 1.15143)
+alignment = 1
+
+[node name="Label" type="Label" parent="TweenPanelManager/MainPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_takno")
+text = "CUSTOMER INFO"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="TweenPanelManager/MainPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "ACCOUNT ID:"
+
+[node name="AccountID" type="LineEdit" parent="TweenPanelManager/MainPanel/VBoxContainer"]
+layout_mode = 2
+caret_blink = true
+
+[node name="Button" type="Button" parent="TweenPanelManager/MainPanel/VBoxContainer"]
+custom_minimum_size = Vector2(50, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "SEARCHJHGIK CFRUILKJUY "
+
+[node name="LoginPanel" type="Control" parent="TweenPanelManager"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_5sod6")
+start_visible = true
+hidden_pos = Vector2(0, -515)
+hide_time = 0.1
+show_time = 0.1
+
+[node name="CenterContainer" type="CenterContainer" parent="TweenPanelManager/LoginPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TweenPanelManager/LoginPanel/CenterContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="TweenPanelManager/LoginPanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_uneditable_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ui8ry")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ui8ry")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_ui8ry")
+text = "bankanator420"
+editable = false
+
+[node name="LineEdit2" type="LineEdit" parent="TweenPanelManager/LoginPanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_uneditable_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ui8ry")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ui8ry")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_ui8ry")
+text = "asdfasdfasdfff"
+editable = false
+secret = true
+
+[node name="Button" type="Button" parent="TweenPanelManager/LoginPanel/CenterContainer/VBoxContainer" node_paths=PackedStringArray("panel")]
+custom_minimum_size = Vector2(50, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "login"
+script = ExtResource("2_356yg")
+button_type = 0
+panel = NodePath("../../../../MainPanel")
+
+[node name="Cursor" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.212999, 0.212999)
+mouse_filter = 2
+texture = ExtResource("1_ne1w7")
+
+[connection signal="text_submitted" from="TweenPanelManager/MainPanel/VBoxContainer/AccountID" to="." method="_on_account_id_text_submitted"]

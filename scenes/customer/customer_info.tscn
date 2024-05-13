@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://bw0my82eed8e6"]
+
+[ext_resource type="PackedScene" uid="uid://ck651yi8qkqbu" path="res://scenes/ui/ui_check.tscn" id="1_gchr4"]
+[ext_resource type="PackedScene" uid="uid://cptgdteo3qi12" path="res://scenes/ui/ui_id.tscn" id="2_dr8vt"]
+[ext_resource type="PackedScene" uid="uid://q3u20q217ynu" path="res://scenes/ui/ui_account_id.tscn" id="3_d4bew"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wr28y"]
+viewport_path = NodePath("CheckSubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_in1f2"]
+resource_local_to_scene = true
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_wr28y")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8l1c5"]
+size = Vector2(2.5, 1.1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_543kt"]
+viewport_path = NodePath("IDSubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qtxjq"]
+resource_local_to_scene = true
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_543kt")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nllue"]
+size = Vector2(1.48, 1.035)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rpdvi"]
+viewport_path = NodePath("AccountIDSubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tst7"]
+resource_local_to_scene = true
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_rpdvi")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_heq7x"]
+size = Vector2(1.48, 0.315)
+
+[node name="CustomerInfo" type="Node3D"]
+
+[node name="MeshCheck" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0750185, 0, 0.0135412, 0, 0.0762308, 0, -0.0135412, 0, 0.0750185, -0.106274, 0, -0.0285606)
+material_override = SubResource("StandardMaterial3D_in1f2")
+mesh = SubResource("PlaneMesh_8l1c5")
+
+[node name="MeshID" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0760228, 0, -0.00562679, 0, 0.0762308, 0, 0.00562679, 0, 0.0760228, 0.064677, 0, -0.0336469)
+material_override = SubResource("StandardMaterial3D_qtxjq")
+mesh = SubResource("PlaneMesh_nllue")
+
+[node name="MeshAccountID" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0762149, -0.00127431, 0.000894934, 0.00127274, 0.07622, 0.000141013, -0.000897164, -0.000126042, 0.0762254, -0.00826757, -4.68279e-05, 0.0695882)
+material_override = SubResource("StandardMaterial3D_2tst7")
+mesh = SubResource("PlaneMesh_heq7x")
+
+[node name="CheckSubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(600, 264)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Check" parent="CheckSubViewport" instance=ExtResource("1_gchr4")]
+
+[node name="IDSubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(448, 312)
+render_target_update_mode = 4
+
+[node name="ID" parent="IDSubViewport" instance=ExtResource("2_dr8vt")]
+layout_direction = 0
+offset_right = 248.889
+offset_bottom = 65.4815
+
+[node name="AccountIDSubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(448, 100)
+render_target_update_mode = 4
+
+[node name="AccountID" parent="AccountIDSubViewport" instance=ExtResource("3_d4bew")]

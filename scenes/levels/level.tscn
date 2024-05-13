@@ -1,0 +1,294 @@
+[gd_scene load_steps=33 format=3 uid="uid://bjtn7pdxc3gjc"]
+
+[ext_resource type="Material" uid="uid://dt3rx50rt186d" path="res://assets/materials/marble1/marble1.tres" id="1_yocmc"]
+[ext_resource type="Texture2D" uid="uid://csdmj4rm7wj1c" path="res://icon.svg" id="2_ijsrm"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="3_a76kn"]
+[ext_resource type="Script" path="res://scripts/cam_select.gd" id="4_2ed4u"]
+[ext_resource type="Script" path="res://scripts/computer.gd" id="5_ubx85"]
+[ext_resource type="AudioStream" uid="uid://7cv6wa3i7fuk" path="res://assets/audio/sfx/keys/ky1.wav" id="6_cydte"]
+[ext_resource type="AudioStream" uid="uid://cwbbyl8qvp2um" path="res://assets/audio/sfx/keys/ky2.wav" id="7_ggjhm"]
+[ext_resource type="AudioStream" uid="uid://6jk7lulvxiah" path="res://assets/audio/sfx/keys/ky3.wav" id="8_ye3n4"]
+[ext_resource type="AudioStream" uid="uid://cuncj1fodq75r" path="res://assets/audio/sfx/keys/ky4.wav" id="9_xk5kx"]
+[ext_resource type="AudioStream" uid="uid://cg8xs7484nlo5" path="res://assets/audio/sfx/keys/ky5.wav" id="10_fo5cn"]
+[ext_resource type="AudioStream" uid="uid://dkxldb3u626l" path="res://assets/audio/sfx/mouse/ms1wav.wav" id="11_236dn"]
+[ext_resource type="AudioStream" uid="uid://cymwx7cma8gmf" path="res://assets/audio/sfx/mouse/ms2.wav" id="12_afgu1"]
+[ext_resource type="AudioStream" uid="uid://dcqpeawthskbu" path="res://assets/audio/sfx/mouse/ms3.wav" id="13_veebx"]
+[ext_resource type="PackedScene" uid="uid://ljraqsatl01l" path="res://scenes/ui/ui_login.tscn" id="14_y65bq"]
+[ext_resource type="Script" path="res://scripts/customer_manager.gd" id="15_k85bw"]
+[ext_resource type="PackedScene" uid="uid://bw0my82eed8e6" path="res://scenes/customer/customer_info.tscn" id="16_mjyq2"]
+[ext_resource type="PackedScene" uid="uid://pl7ovo0orapj" path="res://scenes/customer/customer.tscn" id="17_srs7x"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_smrw2"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ds4rt"]
+sky_material = SubResource("ProceduralSkyMaterial_smrw2")
+
+[sub_resource type="Environment" id="Environment_21ymo"]
+background_mode = 2
+sky = SubResource("Sky_ds4rt")
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 0.84
+ssao_intensity = 3.22
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tq0e6"]
+albedo_texture = ExtResource("2_ijsrm")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bf0j0"]
+radius = 0.325576
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8nk7j"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_26psh"]
+streams_count = 5
+stream_0/stream = ExtResource("6_cydte")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_ggjhm")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("8_ye3n4")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("9_xk5kx")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("10_fo5cn")
+stream_4/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vq3pb"]
+streams_count = 3
+stream_0/stream = ExtResource("11_236dn")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("12_afgu1")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("13_veebx")
+stream_2/weight = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5384n"]
+viewport_path = NodePath("PlayerDesk/computer/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtgk7"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_5384n")
+
+[sub_resource type="QuadMesh" id="QuadMesh_aqqqw"]
+
+[sub_resource type="Animation" id="Animation_2q3xl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0220182, 1.25112, -5.56967)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jffh3"]
+resource_name = "give"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0220183, 1.53174, -4.65901), Vector3(-0.0220183, 1.66984, -4.93547), Vector3(-0.0220182, 1.25112, -5.56967)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.896, 3.14159, 0), Vector3(-0.597333, 3.14159, 0), Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_15w0n"]
+_data = {
+"RESET": SubResource("Animation_2q3xl"),
+"give": SubResource("Animation_jffh3")
+}
+
+[sub_resource type="Curve3D" id="Curve3D_4shdt"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.45492e-06, 0, 1.30654, 0, 0, 0, 0, 0, 0, 0, 0, -15.136),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Level" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_21ymo")
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1)
+material_override = ExtResource("1_yocmc")
+size = Vector3(17, 1, 20)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.5, -1)
+material_override = SubResource("StandardMaterial3D_tq0e6")
+size = Vector3(1, 7, 20)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.5, -11)
+material_override = SubResource("StandardMaterial3D_tq0e6")
+size = Vector3(1, 7, 18)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.74228e-07, 2.5, 9)
+material_override = SubResource("StandardMaterial3D_tq0e6")
+size = Vector3(1, 7, 18)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.5, -1)
+material_override = SubResource("StandardMaterial3D_tq0e6")
+size = Vector3(1, 7, 20)
+
+[node name="PlayerDesk" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="PlayerDesk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89223, 6.85312)
+script = ExtResource("3_a76kn")
+
+[node name="RayCast3D" type="RayCast3D" parent="PlayerDesk/Camera3D"]
+target_position = Vector3(0, 0, -4)
+collide_with_areas = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="PlayerDesk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.724282, 5.95576)
+size = Vector3(4.39355, 1, 1.24365)
+
+[node name="Area3D" type="Area3D" parent="PlayerDesk/CSGBox3D2"]
+transform = Transform3D(1, -2.60512e-08, -1.49138e-07, 0, 0.0784072, 0.996921, -1.86265e-09, -0.996921, 0.0784072, -2.69019e-06, 0.670418, 0.267812)
+script = ExtResource("4_2ed4u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDesk/CSGBox3D2/Area3D"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0, -0.292975)
+shape = SubResource("SphereShape3D_bf0j0")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="PlayerDesk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.746336, 6.11863)
+material_override = SubResource("StandardMaterial3D_8nk7j")
+use_collision = true
+size = Vector3(0.581055, 1, 0.737305)
+
+[node name="computer" type="Node3D" parent="PlayerDesk"]
+transform = Transform3D(0.57747, -0.816138, 0.0211748, -0.0366437, -4.42597e-08, 0.999329, -0.815588, -0.577858, -0.0299063, -0.693573, 1.28379, 6.41657)
+script = ExtResource("5_ubx85")
+
+[node name="SFXKeys" type="AudioStreamPlayer3D" parent="PlayerDesk/computer"]
+transform = Transform3D(1, 1.2815e-06, 7.45058e-08, 2.98023e-08, 1, 9.31323e-09, 0, 1.86265e-09, 0.999999, -9.53674e-07, -0.167576, 0)
+stream = SubResource("AudioStreamRandomizer_26psh")
+volume_db = -40.0
+pitch_scale = 1.5
+panning_strength = 3.0
+attenuation_filter_db = 0.0
+
+[node name="SFXMouse" type="AudioStreamPlayer3D" parent="PlayerDesk/computer"]
+transform = Transform3D(1, 1.2815e-06, 7.45058e-08, 2.98023e-08, 1, 9.31323e-09, 0, 1.86265e-09, 0.999999, -9.53674e-07, -0.167576, 0)
+stream = SubResource("AudioStreamRandomizer_vq3pb")
+volume_db = -40.0
+pitch_scale = 1.5
+panning_strength = 3.0
+attenuation_filter_db = 0.0
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="PlayerDesk/computer"]
+transform = Transform3D(0.999985, -0.00161389, 0.00542584, 0.00555098, 0.0911368, -0.995823, 0.00111267, 0.995836, 0.0911442, -0.000336647, 0.0585186, 0.362441)
+size = Vector3(0.488525, 0.431641, 0.265564)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="PlayerDesk/computer"]
+transform = Transform3D(1, 3.53903e-08, -2.98023e-08, 8.04663e-07, -3.72529e-09, -1, -2.42144e-08, 0.999999, -4.47035e-08, -9.53674e-07, 0.0394876, 0.0659744)
+size = Vector3(0.125, 0.185547, 0.0644531)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="PlayerDesk/computer"]
+transform = Transform3D(1, 2.98023e-08, 2.6077e-08, -2.98023e-08, 1, -1.75089e-07, -1.86265e-09, 0, 0.999995, -0.00634718, -4.76837e-07, -0.00617099)
+size = Vector3(0.112305, 0.13916, 0.0521088)
+
+[node name="SubViewport" type="SubViewport" parent="PlayerDesk/computer"]
+transparent_bg = true
+handle_input_locally = false
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Control" parent="PlayerDesk/computer/SubViewport" instance=ExtResource("14_y65bq")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerDesk/computer"]
+transform = Transform3D(0.35, -3.72529e-09, -1.49012e-08, -1.49012e-08, 0.0318065, -0.348552, 9.31323e-10, 0.348551, 0.0318065, 9.53674e-07, -0.0808547, 0.391579)
+material_override = SubResource("StandardMaterial3D_wtgk7")
+mesh = SubResource("QuadMesh_aqqqw")
+
+[node name="Area3D" type="Area3D" parent="PlayerDesk/computer"]
+transform = Transform3D(1, -2.23517e-08, -1.49012e-07, 0, 0.146445, -0.989219, -1.86265e-09, 0.989218, 0.146446, -2.86102e-06, -0.401718, 0.417996)
+script = ExtResource("4_2ed4u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDesk/computer/Area3D"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0, -0.292975)
+shape = SubResource("SphereShape3D_bf0j0")
+
+[node name="LabelLogin" type="Label3D" parent="PlayerDesk/computer"]
+transform = Transform3D(1, 7.45058e-09, 0, 0, 3.35276e-08, -1, -1.86265e-09, 1, -2.42144e-08, -4.76837e-07, 2.38419e-07, 0.758163)
+text = "click to login"
+
+[node name="CustomerManager" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.49691e-07, 0, 0.642364)
+script = ExtResource("15_k85bw")
+
+[node name="CustomerInfo" parent="CustomerManager" instance=ExtResource("16_mjyq2")]
+transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, -0.0220182, 1.25112, -5.56967)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CustomerManager/CustomerInfo"]
+libraries = {
+"": SubResource("AnimationLibrary_15w0n")
+}
+
+[node name="Customers" type="Path3D" parent="CustomerManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13687e-13, 0, 11.3358)
+curve = SubResource("Curve3D_4shdt")
+
+[node name="Customer" parent="CustomerManager/Customers" instance=ExtResource("17_srs7x")]
+transform = Transform3D(0.999981, 0, 8.84834e-08, 0, 1, 0, -8.84834e-08, 0, 0.999981, 1.45492e-06, 0, 1.30654)
+
+[node name="SpawnTimer" type="Timer" parent="CustomerManager"]
+wait_time = 15.0
+autostart = true
+
+[connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
